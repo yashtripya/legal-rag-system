@@ -72,12 +72,19 @@ class LegalRAGPipeline:
         except Exception as e:
             return {"status": "error", "filename": path.name, "error_type": "system", "error": str(e)}
 
-    def ingest_directory(self, dir_path: str | Path = SAMPLE_DATA_DIR) -> Dict[str, Any]:
+    def ingest_directory(
+        self,
+        dir_path: str | Path = SAMPLE_DATA_DIR,
+        recursive: bool = True,
+        verbose: bool = False,
+    ) -> Dict[str, Any]:
         """
         Ingests all supported legal documents (.pdf, .txt) from a directory.
         
         Args:
             dir_path: Directory path.
+            recursive: If True, recursively searches subdirectories.
+            verbose: If True, prints progress to console.
             
         Returns:
             Batch summary dictionary.
@@ -86,12 +93,18 @@ class LegalRAGPipeline:
         if not target_dir.exists() or not target_dir.is_dir():
             return {"status": "error", "error": f"Directory not found: {target_dir}"}
 
-        results = []
+        glob_pattern = "**/*" if recursive else "*"
         supported_files = [
-            f for f in target_dir.glob("*") if f.suffix.lower() in LegalDocumentLoader.SUPPORTED_EXTENSIONS
+            f for f in target_dir.glob(glob_pattern)
+            if f.is_file() and f.suffix.lower() in LegalDocumentLoader.SUPPORTED_EXTENSIONS
         ]
 
-        for file_p in supported_files:
+        results = []
+        total_files = len(supported_files)
+
+        for idx, file_p in enumerate(supported_files, start=1):
+            if verbose:
+                print(f"[{idx}/{total_files}] Processing '{file_p.name}'...")
             res = self.ingest_file(file_p)
             results.append(res)
 
@@ -100,7 +113,7 @@ class LegalRAGPipeline:
 
         return {
             "status": "completed",
-            "total_files_found": len(supported_files),
+            "total_files_found": total_files,
             "successful_files": len(successful),
             "failed_files": len(failed),
             "details": results,

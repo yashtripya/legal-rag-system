@@ -52,7 +52,7 @@ def main():
     else:
         dir_p = Path(args.dir).resolve()
         print(f"\n📁 Ingesting directory: {dir_p}...")
-        summary = pipeline.ingest_directory(dir_p)
+        summary = pipeline.ingest_directory(dir_p, verbose=True)
         
         print(f"\nTotal Files Found: {summary.get('total_files_found')}")
         print(f"✅ Successful Ingestions: {summary.get('successful_files')}")
