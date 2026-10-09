@@ -1,0 +1,29 @@
+=== IN THE SUPREME COURT OF INDIA ===
+Citation: AIR 1973 SC 1461 | (1973) 4 SCC 225
+Case Title: Kesavananda Bharati Sripadagalvaru and Ors. v. State of Kerala and Anr.
+Bench: S.M. Sikri C.J., J.M. Shelat, K.S. Hegde, A.N. Grover, A.N. Ray, P. Jaganmohan Reddy, D.G. Palekar, H.R. Khanna, A.K. Mukherjea, Y.V. Chandrachud, S.N. Dwivedi, M.H. Beg, C.A. Vaidialingam
+Date of Judgment: April 24, 1973
+
+SUBJECT / HEADNOTE:
+Constitutional Law — Article 368 — Power of Parliament to amend the Constitution — Basic Structure Doctrine.
+
+SUMMARY OF RULING:
+The Supreme Court of India held by a 7:6 majority that while Parliament has wide powers under Article 368 of the Constitution to amend any part of the Constitution, including Fundamental Rights, this amending power does not extend to abrogating or altering the 'Basic Structure' or essential features of the Constitution.
+
+KEY LEGAL PRINCIPLES ESTABLISHED:
+1. Basic Structure Doctrine: Parliament cannot alter the basic structure or framework of the Indian Constitution through constitutional amendments.
+2. Essential Features of the Constitution include:
+   - Supremacy of the Constitution
+   - Republican and Democratic form of Government
+   - Secular character of the Constitution
+   - Separation of powers between the Legislature, Executive, and Judiciary
+   - Federal character of the Constitution
+   - Dignity of the individual secured by Fundamental Rights and Directive Principles
+3. Power to amend under Article 368 is not an unlimited power to rewrite or destroy the Constitution. Judicial review remains an integral component of the basic structure.
+
+SOURCE METADATA:
+Document Title: Kesavananda Bharati v. State of Kerala
+Issuing Authority: Supreme Court of India
+Jurisdiction: Constitutional Law
+Date: 1973-04-24
+Source URL: https://main.sci.gov.in/judgments

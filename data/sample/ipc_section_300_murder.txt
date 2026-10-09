@@ -1,0 +1,29 @@
+=== THE INDIAN PENAL CODE, 1860 (ACT NO. 45 OF 1860) ===
+Statute Name: Indian Penal Code, 1860 (IPC)
+Jurisdiction: Criminal Law of India
+
+SECTION 299: CULPABLE HOMICIDE
+Whoever causes death by doing an act with the intention of causing death, or with the intention of causing such bodily injury as is likely to cause death, or with the knowledge that he is likely by such act to cause death, commits the offense of culpable homicide.
+
+SECTION 300: MURDER
+Except in the cases hereinafter excepted, culpable homicide is murder, if the act by which the death is caused is done with the intention of causing death, or—
+1. Secondly.—If it is done with the intention of causing such bodily injury as the offender knows to be likely to cause the death of the person to whom the harm is caused, or—
+2. Thirdly.—If it is done with the intention of causing bodily injury to any person and the bodily injury intended to be inflicted is sufficient in the ordinary course of nature to cause death, or—
+3. Fourthly.—If the person committing the act knows that it is so imminently dangerous that it must, in all probability, cause death or such bodily injury as is likely to cause death, and commits such act without any excuse for incurring the risk of causing death or such injury as aforesaid.
+
+EXCEPTIONS TO SECTION 300 (WHEN CULPABLE HOMICIDE IS NOT MURDER):
+- Exception 1 (Grave and Sudden Provocation): Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation or causes the death of any other person by mistake or accident.
+- Exception 2 (Right of Private Defense): Culpable homicide is not murder if the offender, in the exercise in good faith of the right of private defense of person or property, exceeds the power given to him by law and causes the death of the person against whom he is exercising such right without premeditation.
+- Exception 3 (Public Servant): Culpable homicide is not murder if the offender, being a public servant or aiding a public servant acting for the advancement of public justice, exceeds the powers given to him by law and causes death by doing an act which he, in good faith, believes to be lawful and necessary for the due discharge of his duty.
+- Exception 4 (Sudden Fight): Culpable homicide is not murder if it is committed without premeditation in a sudden fight in the heat of passion upon a sudden quarrel and without the offender having taken undue advantage or acted in a cruel or unusual manner.
+- Exception 5 (Consent): Culpable homicide is not murder when the person whose death is caused, being above the age of eighteen years, suffers death or takes the risk of death with his own consent.
+
+SECTION 302: PUNISHMENT FOR MURDER
+Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine.
+
+SOURCE METADATA:
+Document Title: Indian Penal Code 1860 - Sections 299, 300, 302
+Issuing Authority: Parliament of India / Legislative Department
+Jurisdiction: Criminal Law
+Date: 1860-10-06
+Source URL: https://indiacode.nic.in

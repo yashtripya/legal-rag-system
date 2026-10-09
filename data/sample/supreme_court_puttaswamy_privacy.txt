@@ -1,0 +1,27 @@
+=== IN THE SUPREME COURT OF INDIA ===
+Citation: (2017) 10 SCC 1 | AIR 2017 SC 4161
+Case Title: Justice K.S. Puttaswamy (Retd.) and Anr. v. Union of India and Ors.
+Bench: J.S. Khehar C.J., J. Chelameswar, S.A. Bobde, R.K. Agrawal, R.F. Nariman, A.M. Sapre, D.Y. Chandrachud, S.K. Kaul, S.A. Nazeer
+Date of Judgment: August 24, 2017
+
+SUBJECT / HEADNOTE:
+Constitutional Law — Article 21 — Fundamental Right to Privacy — Information Privacy — Autonomy and Bodily Integrity.
+
+SUMMARY OF RULING:
+A 9-judge Constitution Bench of the Supreme Court of India unanimously held that the Right to Privacy is a fundamental right guaranteed under Article 21 (Right to Life and Personal Liberty) and Part III of the Constitution of India.
+
+KEY LEGAL PRINCIPLES ESTABLISHED:
+1. Fundamental Nature: The right to privacy is an intrinsic part of the right to life and personal liberty under Article 21 and is protected as part of the freedoms guaranteed by Part III of the Constitution.
+2. Overruling Previous Decisions: The Court expressly overruled M.P. Sharma (1954) and Kharak Singh (1962) to the extent that those judgments held that privacy was not a constitutionally protected right.
+3. Three-Pronged Test for Permissible Infringement: Any state restriction on privacy must satisfy three strict requirements:
+   (a) Legality: Existence of a valid law authorizing the restriction.
+   (b) Legitimate State Aim: The law must serve a legitimate state purpose.
+   (c) Proportionality: The nature and extent of the interference must be proportional to the object sought to be achieved.
+4. Dimensions of Privacy: Privacy encompasses spatial privacy, decisional autonomy, and informational privacy.
+
+SOURCE METADATA:
+Document Title: Justice K.S. Puttaswamy v. Union of India
+Issuing Authority: Supreme Court of India
+Jurisdiction: Fundamental Rights / Constitutional Law
+Date: 2017-08-24
+Source URL: https://main.sci.gov.in/judgments
