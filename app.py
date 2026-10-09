@@ -59,7 +59,7 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_dict_replace=True,
+    unsafe_allow_html=True,
 )
 
 
