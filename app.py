@@ -66,7 +66,12 @@ st.markdown(
 @st.cache_resource
 def get_pipeline():
     """Singleton pipeline instance cached for Streamlit session."""
-    return LegalRAGPipeline()
+    pipe = LegalRAGPipeline()
+    stats = pipe.vector_store.get_stats()
+    if stats.get("total_chunks", 0) == 0:
+        if SAMPLE_DATA_DIR.exists():
+            pipe.ingest_directory(SAMPLE_DATA_DIR)
+    return pipe
 
 
 pipeline = get_pipeline()

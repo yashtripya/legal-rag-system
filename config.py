@@ -34,7 +34,7 @@ DEFAULT_CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
 
 # Retrieval Hyperparameters
 DEFAULT_TOP_K = int(os.getenv("DEFAULT_TOP_K", "4"))
-DEFAULT_SCORE_THRESHOLD = float(os.getenv("DEFAULT_SCORE_THRESHOLD", "0.20"))
+DEFAULT_SCORE_THRESHOLD = float(os.getenv("DEFAULT_SCORE_THRESHOLD", "0.05"))
 
 # LLM Configuration (Local Ollama)
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
