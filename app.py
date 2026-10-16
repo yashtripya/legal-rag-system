@@ -7,7 +7,16 @@ import os
 import streamlit as st
 from pathlib import Path
 
-from config import DEFAULT_TOP_K, DEFAULT_SCORE_THRESHOLD, DEFAULT_LLM_MODEL, SUPPORTED_LLM_MODELS, SAMPLE_DATA_DIR, RAW_DATA_DIR
+from config import (
+    DEFAULT_TOP_K,
+    DEFAULT_SCORE_THRESHOLD,
+    DEFAULT_LLM_MODEL,
+    SUPPORTED_LLM_MODELS,
+    SAMPLE_DATA_DIR,
+    RAW_DATA_DIR,
+    CHROMA_DB_DIR,
+    PREBUILT_DB_DIR,
+)
 from src.rag_pipeline import LegalRAGPipeline
 
 
