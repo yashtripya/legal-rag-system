@@ -143,6 +143,12 @@ with st.sidebar:
             st.success(f"Successfully processed and indexed {success_count} file(s)!")
             st.rerun()
 
+    if st.button("Restore 1,000+ Supreme Court Library", use_container_width=True):
+        with st.spinner("Restoring full library of 1,004 Supreme Court Judgments (32,197 chunks)..."):
+            res = pipeline.restore_prebuilt_library()
+            st.success("Successfully restored 1,004 Supreme Court judgments into vector database!")
+            st.rerun()
+
     if st.button("Clear Vector Database", type="secondary", use_container_width=True):
         pipeline.clear_index()
         st.warning("Vector collection reset!")
@@ -248,11 +254,21 @@ with tab2:
     st.metric("Total Document Files", stats.get("total_documents", 0))
 
     if stats.get("source_files"):
-        st.markdown("### Source Document List")
-        for fn in stats.get("source_files", []):
+        source_files = stats.get("source_files", [])
+        st.markdown(f"### Source Document List ({len(source_files)} files)")
+        search_filter = st.text_input("🔍 Search indexed judgments by name:", "")
+        if search_filter:
+            filtered_files = [f for f in source_files if search_filter.lower() in f.lower()]
+        else:
+            filtered_files = source_files[:50]
+
+        for fn in filtered_files:
             st.write(f"- 📄 `{fn}`")
+
+        if not search_filter and len(source_files) > 50:
+            st.caption(f"Showing first 50 of {len(source_files)} indexed judgments. Use the search box above to find any case.")
     else:
-        st.info("No legal documents indexed yet. Click 'Ingest Sample Legal Dataset' in the sidebar to get started.")
+        st.info("No legal documents indexed yet. Click 'Restore 1,000+ Supreme Court Library' or 'Ingest Sample Legal Dataset' in the sidebar to get started.")
 
 
 # -----------------------------------------------------------------------------

@@ -185,3 +185,19 @@ class LegalRAGPipeline:
     def clear_index(self) -> bool:
         """Clears vector database collection."""
         return self.vector_store.clear_collection()
+
+    def restore_prebuilt_library(self) -> Dict[str, Any]:
+        """Restores the full 1,000+ Supreme Court judgments library from prebuilt split-archives."""
+        success = LegalVectorStore.ensure_prebuilt_restored(force=True)
+        # Re-initialize vector store and retriever
+        self.vector_store = LegalVectorStore(
+            persist_dir=self.vector_store.persist_dir,
+            collection_name=self.vector_store.collection_name,
+            embedding_model=self.embeddings,
+        )
+        self.retriever.vector_store = self.vector_store
+        return {
+            "status": "success" if success else "failed",
+            "stats": self.vector_store.get_stats(),
+        }
+

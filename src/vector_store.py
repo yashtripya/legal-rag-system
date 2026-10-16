@@ -4,13 +4,15 @@ Manages persistent ChromaDB vector storage, document indexing, deduplication, an
 """
 
 import os
+import io
+import shutil
 import hashlib
 from pathlib import Path
 from typing import List, Dict, Any, Tuple, Optional
 import chromadb
 from chromadb.config import Settings
 
-from config import CHROMA_DB_DIR, COLLECTION_NAME, EMBEDDING_MODEL_NAME
+from config import CHROMA_DB_DIR, PREBUILT_DB_DIR, COLLECTION_NAME, EMBEDDING_MODEL_NAME
 from src.document_loader import LegalDocument
 from src.embeddings import LocalLegalEmbeddings
 
@@ -26,6 +28,45 @@ class LegalVectorStore:
     Handles adding chunks, querying top-k matches, deduplication, and collection stats.
     """
 
+    @staticmethod
+    def ensure_prebuilt_restored(
+        persist_dir: str | Path = CHROMA_DB_DIR,
+        prebuilt_dir: str | Path = PREBUILT_DB_DIR,
+        force: bool = False,
+    ) -> bool:
+        """
+        Restores the pre-indexed legal vector database from split-archive parts if needed.
+        Used on Streamlit Cloud or fresh environments to instantiate the 1,000+ judgments library.
+        """
+        target = Path(persist_dir).resolve()
+        sqlite_file = target / "chroma.sqlite3"
+        prebuilt_path = Path(prebuilt_dir).resolve()
+        parts = sorted(prebuilt_path.glob("part_*.bin"))
+
+        if not parts:
+            return False
+
+        # If already populated with a full database (> 50MB) and not force, skip
+        if not force and sqlite_file.exists() and sqlite_file.stat().st_size > 50 * 1024 * 1024:
+            return False
+
+        temp_zip = target.parent / "chroma_reassemble_tmp.zip"
+        try:
+            with open(temp_zip, "wb") as f_out:
+                for part in parts:
+                    with open(part, "rb") as f_in:
+                        f_out.write(f_in.read())
+
+            target.mkdir(parents=True, exist_ok=True)
+            shutil.unpack_archive(str(temp_zip), str(target))
+            return True
+        except Exception as e:
+            print(f"Warning: Failed to restore prebuilt database: {e}")
+            return False
+        finally:
+            if temp_zip.exists():
+                temp_zip.unlink()
+
     def __init__(
         self,
         persist_dir: str | Path = CHROMA_DB_DIR,
@@ -35,6 +76,10 @@ class LegalVectorStore:
         self.persist_dir = str(Path(persist_dir).resolve())
         self.collection_name = collection_name
         self.embeddings = embedding_model or LocalLegalEmbeddings()
+
+        # Automatically restore prebuilt 1,000+ judgments database if targeting default directory
+        if str(Path(self.persist_dir).resolve()) == str(Path(CHROMA_DB_DIR).resolve()):
+            self.ensure_prebuilt_restored(persist_dir=self.persist_dir)
 
         # Initialize ChromaDB persistent client
         self.client = chromadb.PersistentClient(

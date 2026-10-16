@@ -15,9 +15,10 @@ SAMPLE_DATA_DIR = DATA_DIR / "sample"
 
 STORAGE_DIR = BASE_DIR / "storage"
 CHROMA_DB_DIR = STORAGE_DIR / "chroma_db"
+PREBUILT_DB_DIR = STORAGE_DIR / "prebuilt"
 
 # Ensure essential directories exist
-for path in [DATA_DIR, RAW_DATA_DIR, PROCESSED_DATA_DIR, SAMPLE_DATA_DIR, STORAGE_DIR, CHROMA_DB_DIR]:
+for path in [DATA_DIR, RAW_DATA_DIR, PROCESSED_DATA_DIR, SAMPLE_DATA_DIR, STORAGE_DIR, CHROMA_DB_DIR, PREBUILT_DB_DIR]:
     path.mkdir(parents=True, exist_ok=True)
 
 # ChromaDB Settings
