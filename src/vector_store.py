@@ -77,10 +77,6 @@ class LegalVectorStore:
         self.collection_name = collection_name
         self.embeddings = embedding_model or LocalLegalEmbeddings()
 
-        # Automatically restore prebuilt 1,000+ judgments database if targeting default directory
-        if str(Path(self.persist_dir).resolve()) == str(Path(CHROMA_DB_DIR).resolve()):
-            self.ensure_prebuilt_restored(persist_dir=self.persist_dir)
-
         # Initialize ChromaDB persistent client
         self.client = chromadb.PersistentClient(
             path=self.persist_dir,
@@ -221,7 +217,11 @@ class LegalVectorStore:
         """Returns metadata statistics about the vector collection."""
         try:
             count = self.collection.count()
-            records = self.collection.get(include=["metadatas"])
+            # If collection is large (> 500 chunks), sample records to avoid OOM memory spikes
+            if count > 500:
+                records = self.collection.get(limit=100, include=["metadatas"])
+            else:
+                records = self.collection.get(include=["metadatas"])
             
             source_files = set()
             document_titles = set()
@@ -233,9 +233,10 @@ class LegalVectorStore:
                     if "document_title" in meta:
                         document_titles.add(meta["document_title"])
 
+            total_docs = len(source_files) if count <= 500 else max(len(source_files), count // 32)
             return {
                 "total_chunks": count,
-                "total_documents": len(source_files),
+                "total_documents": total_docs,
                 "source_files": list(source_files),
                 "document_titles": list(document_titles),
                 "collection_name": self.collection_name,

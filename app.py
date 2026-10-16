@@ -75,13 +75,6 @@ st.markdown(
 @st.cache_resource
 def get_pipeline():
     """Singleton pipeline instance cached for Streamlit session."""
-    sqlite_file = CHROMA_DB_DIR / "chroma.sqlite3"
-    
-    # Automatically unpack 1,004 pre-indexed judgments if database is fresh or only has small sample (<50MB)
-    if not sqlite_file.exists() or sqlite_file.stat().st_size < 50 * 1024 * 1024:
-        from src.vector_store import LegalVectorStore
-        LegalVectorStore.ensure_prebuilt_restored(persist_dir=CHROMA_DB_DIR, force=True)
-
     pipe = LegalRAGPipeline()
     stats = pipe.vector_store.get_stats()
     if stats.get("total_chunks", 0) == 0:
@@ -157,13 +150,6 @@ with st.sidebar:
 
         if success_count > 0:
             st.success(f"Successfully processed and indexed {success_count} file(s)!")
-            st.rerun()
-
-    if st.button("Restore 1,000+ Supreme Court Library", use_container_width=True):
-        with st.spinner("Restoring full library of 1,004 Supreme Court Judgments (32,197 chunks)..."):
-            st.cache_resource.clear()
-            res = pipeline.restore_prebuilt_library()
-            st.success("Successfully restored 1,004 Supreme Court judgments into vector database!")
             st.rerun()
 
     if st.button("Clear Vector Database", type="secondary", use_container_width=True):

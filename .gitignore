@@ -62,6 +62,7 @@ venv.bak/
 
 # Vector Store Persistent Data & Model Caches
 storage/chroma_db/
+storage/prebuilt/
 *.sqlite3
 .chroma/
 
